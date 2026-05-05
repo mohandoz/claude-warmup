@@ -32,7 +32,7 @@ jobs:
           CLAUDE_OAUTH_TOKEN: ${{ secrets.CLAUDE_OAUTH_TOKEN }}
         run: |
           mkdir -p ~/.claude
-          echo '{"hasCompletedOnboarding":true}' > ~/.claude.json
+          echo '{"hasCompletedOnboarding":true}' > ~/.claude/config.json
           output_file="$(mktemp)"
           set +e
           claude -p "hi" --model haiku --no-session-persistence >"$output_file" 2>&1
