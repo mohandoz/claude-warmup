@@ -33,6 +33,10 @@ jobs:
         run: |
           mkdir -p ~/.claude
           echo '{"hasCompletedOnboarding":true}' > ~/.claude/config.json
+          echo "Token set: $([ -n "$CLAUDE_OAUTH_TOKEN" ] && echo 'YES' || echo 'NO')"
+          echo "Token length: ${#CLAUDE_OAUTH_TOKEN}"
+          echo "Claude version:"
+          claude --version || true
           output_file="$(mktemp)"
           set +e
           export CLAUDE_OAUTH_TOKEN
